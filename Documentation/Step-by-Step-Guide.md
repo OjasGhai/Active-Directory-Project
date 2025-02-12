@@ -27,15 +27,12 @@
 
 ![Azure VM Creation](../Screenshots/Azure_VM_Image_Selection.png)
 
-![Azure VM Creation](../Screenshots/Azure_VM_Azure_VM_Image_Selection.png)
-
-![Azure VM Creation](../Screenshots/Azure_VM_Administrator_Account.png)
+![Azure VM Creation](../Screenshots/Azure_VM_Image_Selection.png)
 
    
 5. Click **Review + Create** → Wait for Deployment to finish.
 
-
-![Azure VM Creation](../Screenshots/Azure_VM_Inbound_Port_Rules.png)
+ ![Azure VM Creation](../Screenshots/Azure_VM_Administrator_Account.png)
 
 ---
 
