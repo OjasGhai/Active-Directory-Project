@@ -7,8 +7,11 @@
 
 ### **1️⃣ Create an Azure Virtual Machine**
 1. Log in to the **Azure Portal**: [https://portal.azure.com](https://portal.azure.com)
-2. Navigate to **Virtual Machines** → Click **Create**.
-3. Choose the following configuration:
+   
+![Azure VM Creation](../Screenshots/Azure_VM_Creation_Overview.png)
+
+3. Navigate to **Virtual Machines** → Click **Create**.
+4. Choose the following configuration:
    - **Subscription**: Select your Azure subscription.
    - **Resource Group**: Create a new or select an existing one.
    - **Virtual Machine Name**: `WindowsServer20`
@@ -17,15 +20,21 @@
    - **Size**: Standard B2s or higher.
    - **Administrator Username & Password**: Set strong credentials.
    - **Inbound Ports**: Allow **RDP (3389)**.
-4. Click **Review + Create** → Wait for Deployment to finish.
 
-![Azure VM Creation](../Screenshots/Azure_VM_Creation_Overview.png)
 ![Azure VM Creation](../Screenshots/Azure_VM_Resource_Group_Selection.png)
+
 ![Azure VM Creation](../Screenshots/Azure_VM_Instance_Details.png)
+
 ![Azure VM Creation](../Screenshots/Azure_VM_Image_Selection.png)
+
 ![Azure VM Creation](../Screenshots/Azure_VM_Azure_VM_Image_Selection.png)
-![Azure VM Creation](../Screenshots/Azure_VM_Administrator_Accounts.png)
-![Azure VM Creation](../Screenshots/Azure_VM_Administrator_Accounts.png)
+
+![Azure VM Creation](../Screenshots/Azure_VM_Administrator_Account.png)
+
+   
+5. Click **Review + Create** → Wait for Deployment to finish.
+
+
 ![Azure VM Creation](../Screenshots/Azure_VM_Inbound_Port_Rules.png)
 
 ---
