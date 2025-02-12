@@ -21,13 +21,13 @@
    - **Administrator Username & Password**: Set strong credentials.
    - **Inbound Ports**: Allow **RDP (3389)**.
 
-![Azure VM Creation](../Screenshots/Azure_VM_Resource_Group_Selection.png)
+![Azure VM Creation](../Screenshots/Azure_VM_Resource_Group_Selection.png) <br>
 
-![Azure VM Creation](../Screenshots/Azure_VM_Instance_Details.png)
+![Azure VM Creation](../Screenshots/Azure_VM_Instance_Details.png)  <br>
 
-![Azure VM Creation](../Screenshots/Azure_VM_Image_Selection.png)
+![Azure VM Creation](../Screenshots/Azure_VM_Image_Selection.png)  <br>
 
-![Azure VM Creation](../Screenshots/Azure_VM_Image_Selection.png)
+![Azure VM Creation](../Screenshots/Azure_VM_Image_Selection.png)  <br>
 
    
 5. Click **Review + Create** → Wait for Deployment to finish.
@@ -41,6 +41,13 @@
 2. Click on **WindowsServer20** → Select **Connect > RDP**.
 3. Download the **RDP file** and open it.
 4. Log in using the credentials set during VM creation.
+
+![Azure VM Creation](../Screenshots/Azure_VM_Details)
+
+![Azure VM Creation](../Screenshots/Azure_VM_Remote_Desktop_Connection)
+
+
+
 
 ---
 
