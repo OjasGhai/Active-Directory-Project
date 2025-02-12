@@ -19,6 +19,9 @@
    - **Inbound Ports**: Allow **RDP (3389)**.
 4. Click **Review + Create** → Wait for Deployment to finish.
 
+![Azure VM Creation](Screenshots/Azure_VM_Creation_Overview.png)
+![Azure VM Resource Group Selection](Azure_VM_Resource_Group_Selection.png)
+
 ---
 
 ### **2️⃣ Connect to the Azure Virtual Machine**
