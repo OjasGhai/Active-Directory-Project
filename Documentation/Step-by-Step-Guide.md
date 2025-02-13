@@ -276,8 +276,17 @@ Enforce_Password_history_Properties
 ## **📌 Step 8: Restrict USB Drive Access for Finance & HR**
 1. Navigate to:  
    **Computer Configuration > Policies > Administrative Templates > System > Removable Storage Access**.
+
+![Azure VM Creation](../Screenshots/USB_access_salesHR.png)
+
+![Azure VM Creation](../Screenshots/USB_acces_settings.png)
+
+
 2. Enable:
    - **All Removable Storage classes: Deny all access**.
+
+![Azure VM Creation](../Screenshots/usb_access_enable.png)
+
 3. Click **OK**.
 
 ---
@@ -285,36 +294,107 @@ Enforce_Password_history_Properties
 ## **📌 Step 9: Map Network Drive for Sales Team**
 1. Navigate to:  
    **User Configuration > Preferences > Windows Settings > Drive Maps**.
-2. Right-click **Drive Maps** → **New > Mapped Drive**.
-3. Set the following:
-   - **Location**: `\\WindowsServer20\SharedSales`
+
+![Azure VM Creation](../Screenshots/Group_Policy_Management_Editor_Drive_Maps.png)
+
+3. Right-click **Drive Maps** → **New > Mapped Drive**.
+4. Set the following:
+   - **Location**: `\\Server\SharedSales`
    - **Reconnect**: Yes
    - **Label**: Sales Shared Drive
    - **Drive Letter**: S:
-4. Click **Apply** and **OK**.
+
+![Azure VM Creation](../Screenshots/New_Drive_Properties.png)
+
+5. Click **Apply** and **OK**.
 
 ---
 
 ## **📌 Step 10: Prevent IT Users from Changing Desktop Background**
-1. In **GPMC**, create a new GPO: **"Restrict Wallpaper for IT"**.
+1. In **GPMC**, create a new GPO: **"IT Group Policy"**.
 2. Navigate to:  
    **User Configuration > Policies > Administrative Templates > Control Panel > Personalization**.
-3. Enable:
+
+![Azure VM Creation](../Screenshots/Control_Panel_Settings_Policy.png)
+
+4. Enable:
    - **Prevent changing desktop background**.
-4. Click **Apply** and **OK**.
-5. Link this GPO to the **IT OU**.
+5. Click **Apply** and **OK**.
+
+![Azure VM Creation](../Screenshots/Prevent_Changing_Desktop_Background_Policy.png)
+
 
 ---
 
 ## **📌 Step 11: Link Group Policy to Organizational Units (OUs)**
 1. In **GPMC**, find the OU (e.g., Sales OU, IT OU).
-2. Right-click the OU → Select **Link an Existing GPO**.
-3. Choose the appropriate GPO → Click **OK**.
+
+![Azure VM Creation](../Screenshots/OU_Linkto_GPO.png)
+
+3. Right-click the OU → Select **Link an Existing GPO**.
+
+![Azure VM Creation](../Screenshots/Select_GPO_Dialog.png)
+
+![Azure VM Creation](../Screenshots/Select_GPO_Dialog2.png)
+
+4. Choose the appropriate GPO → Click **OK**.
 
 ---
 
-## **📌 Final Steps: Apply & Verify GPOs**
+## 📌 Step 11: Apply Group Policy to All OUs and Allow Logon Through Remote Desktop Services
+
+1. In **Group Policy Management Console (GPMC)**, create a new GPO named **"Company Policies"**.
+2. Right-click **Group Policy Objects** → Select **New**.
+3. Name the new GPO: **Company Policies** → Click **OK**.
+
+![Azure VM Creation](../Screenshots/Group_Policy_Management_New_GPO_Company_Policies.png)
+
+4. Right-click **Company Policies** → Select **Edit**.
+5. Navigate to:  
+   **Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > User Rights Assignment**.
+6. Find **Allow log on through Remote Desktop Services** and open it.
+
+   ![Navigating to User Rights Assignment](../Screenshots/User_Assignments_Policy.png)
+
+8. Click **Add User or Group** and enter the required usernames or groups (e.g., IT Admins, specific users).
+9. Click **Check Names** to validate the users and then click **OK**.
+
+![Adding Users to Remote Desktop Access](../Screenshots/allow_logon_through_Remote_desktop.png)
+
+10. Click **Apply** and **OK** to save the changes.
+11. Close the **Group Policy Management Editor**.
+12. Right-click **Company Policies GPO** → Select **Link an Existing GPO**.
+13. Link the GPO to the **Root Domain (oghai.local)** to apply it to all OUs.
+
+---
+
+Now, this **Company Policies** GPO ensures that all OUs inherit these settings, including allowing designated users to log on through Remote Desktop Services.
+
+
+---
+
+## 📌 Final Steps: Apply & Verify GPOs 🛠️
+
 1. Open **Command Prompt (cmd)** or **PowerShell**.
 2. Force apply the policies:
    ```powershell
    gpupdate /force
+   ```
+   ![Applying Group Policy Updates](../Screenshots/Group_Policy_Update_Command.png)
+
+3. **Test the Implemented Policies:**
+   - Close the **Remote Desktop Connection**.
+   - Log in again using **user credentials**.
+   - Verify that the **configured Group Policies** are applied as expected.
+
+---
+
+### 🔹 **Troubleshooting**
+- If the policies do not apply immediately, try logging out and logging back in.
+- Run the command `gpresult /r` in **Command Prompt** to check the applied policies.
+- Ensure that the GPO is properly linked to the **correct Organizational Unit (OU)** in **Group Policy Management Console (GPMC)**.
+- Restart the computer if necessary.
+
+This ensures that **users are correctly assigned the permissions and restrictions** set by the Group Policies. If any issues arise, re-run the `gpupdate /force` command or check the **GPO link status** in Group Policy Management Console (GPMC).
+
+
