@@ -79,11 +79,6 @@ A **detailed step-by-step guide** covering:
 
 ---
 
-The issue is that GitHub's Markdown renderer collapses consecutive spaces and does not support traditional ASCII tree structures well in preview mode. To fix this, you can use **code blocks (` ``` `) around the structure**, ensuring it maintains proper formatting in preview mode.
-
-
-
-
 ## 📂 Project Structure
 
 /Active-Directory-Project  
